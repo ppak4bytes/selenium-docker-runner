@@ -34,7 +34,7 @@
           - HUB_HOST=zalenium
           - MODULE=search-module.xml
         volumes: 
-          - ./search-result:/Users/pavlopak/Documents/Jv/Udemy/workspace/
+          - ./output/search-result:/Users/pavlopak/Documents/Jv/Udemy/workspace/
       book-flight-module:
         image: ppak4bytes/selenium-docker
         depends_on: 
@@ -43,5 +43,5 @@
           - HUB_HOST=zalenium
           - MODULE=book-flight-module.xml
         volumes: 
-          - ./-result:/Users/pavlopak/Documents/Jv/Udemy/workspace/
+          - ./output/book-result:/Users/pavlopak/Documents/Jv/Udemy/workspace/
                           

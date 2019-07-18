@@ -13,7 +13,7 @@ pipeline{
 		}
 		stage("Run Test"){
 			steps{
-				sh "docker-compose up search-module --no-color"
+				sh "docker-compose up search-module"
 			}
 		}
 	}
