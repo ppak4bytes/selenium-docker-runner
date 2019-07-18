@@ -1,1 +1,47 @@
-#
+# Usage:
+    #   docker-compose up --force-recreate
+    version: '2.1'
+
+    services:
+      #--------------#
+      zalenium:
+        image: "dosel/zalenium"
+        container_name: zalenium
+        hostname: zalenium
+        tty: true
+        volumes:
+          - /tmp/videos:/home/seluser/videos
+          - /var/run/docker.sock:/var/run/docker.sock
+        ports:
+          - 4444:4444
+        privileged: true  
+        command: >
+          start --desiredContainers 2
+                --maxDockerSeleniumContainers 8
+                --screenWidth 800 --screenHeight 600
+                --timeZone "Europe/Berlin"
+                --videoRecordingEnabled true
+                --sauceLabsEnabled false
+                --browserStackEnabled false
+                --testingBotEnabled false
+                --cbtEnabled false
+                --startTunnel false
+      search-module:
+        image: ppak4bytes/selenium-docker
+        depends_on: 
+          - zalenium
+        environment:
+          - HUB_HOST=zalenium
+          - MODULE=search-module.xml
+        volumes: 
+          - ./search-result:/Users/pavlopak/Documents/Jv/Udemy/workspace/
+      book-flight-module:
+        image: ppak4bytes/selenium-docker
+        depends_on: 
+          - zalenium
+        environment:
+          - HUB_HOST=zalenium
+          - MODULE=book-flight-module.xml
+        volumes: 
+          - ./-result:/Users/pavlopak/Documents/Jv/Udemy/workspace/
+                          
