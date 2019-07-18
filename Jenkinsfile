@@ -8,7 +8,7 @@ pipeline{
 		}
 		stage("Run Test"){
 			steps{
-				sh "docker-compose up"
+				sh "docker-compose up zalenium search-module"
 			}
 		}
 	}
