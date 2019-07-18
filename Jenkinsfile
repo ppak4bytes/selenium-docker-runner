@@ -8,7 +8,7 @@ pipeline{
 		}
 		stage("Start grid"){
 			steps{
-				sh "docker-compose up -d zalenium --no-color"
+				sh "docker-compose up -d zalenium"
 			}
 		}
 		stage("Run Test"){
